@@ -20,7 +20,7 @@ if st.session_state.num_esercizio>=0:
         try:
             st.image(f"images/{scheda.iloc[st.session_state.num_esercizio].tolist()[0].lower()}.gif")
         except:
-            st.image(Image.open(f"images/image_not_found.jpg"))
+            st.image(Image.open(f"images/image_not_found.gif"))
     with col_2:
         st.markdown(f"**:blue[{scheda.iloc[st.session_state.num_esercizio].tolist()[0]}]**")
         st.markdown(f"**:blue[{scheda.iloc[st.session_state.num_esercizio].tolist()[1]}]**")
