@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from supabase import create_client, Client
 
 st.set_page_config(page_title="Scheda Palestra", page_icon="💪")
 
@@ -8,8 +9,6 @@ st.sidebar.write("Seleziona una pagina dal menu.")
 
 st.title("🏠 Home Page")
 st.write("Benvenuto nella mia app multipagina con Streamlit! Usa la sidebar per navigare.")
-
-from supabase import create_client, Client
 
 # Initialize connection.
 # Uses st.cache_resource to only run once.

@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import time
-from st_circular_progress import CircularProgress
 from PIL import Image
 
 import utils
