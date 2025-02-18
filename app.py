@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 from supabase import create_client, Client
+import utils
 
 st.set_page_config(page_title="Scheda Palestra", page_icon="💪")
 
@@ -39,7 +40,6 @@ def download_gif_files(bucket_name: str, download_folder: str):
     response = supabase.storage.from_(bucket_name).list()
     
     # Filtra i file con estensione .gif
-    print(response)
     gif_files = [file['name'] for file in response if file['name'].endswith('.gif')]
     
     if not gif_files:
@@ -56,10 +56,12 @@ def download_gif_files(bucket_name: str, download_folder: str):
             print(f"Scaricando il file: {gif_file}")
             file_data = supabase.storage.from_(bucket_name).download(gif_file)
             
+
             # Salva il file nella cartella di download
             file_path = os.path.join(download_folder, gif_file)
             with open(file_path, "wb") as f:
                 f.write(file_data)
+                utils.resize_gif(file_path, file_path, (300, 300))
 
 supabase = init_connection()
 
